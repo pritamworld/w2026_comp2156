@@ -1,4 +1,4 @@
-name: CI
+name: CI - W2025 - COMP2156 DevOps Lab Workflow
 on:
   push:
     branches: [ "main" ]
