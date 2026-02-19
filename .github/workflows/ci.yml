@@ -10,10 +10,6 @@ permissions:
   pages: write # Allow the workflow to publish to GitHub Pages
   id-token: write # Allow the workflow to create and sign OIDC tokens
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: true # Cancel any in-progress runs of this workflow when a new run is triggered
-
 jobs:
   build:
     environment:
