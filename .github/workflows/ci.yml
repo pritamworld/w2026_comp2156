@@ -5,17 +5,8 @@ on:
   pull_request:
     branches: ["main"] # Adjust this to your main branch name if necessary
 
-permissions:
-  contents: read # Allow the workflow to read repository contents
-  pages: write # Allow the workflow to publish to GitHub Pages
-  id-token: write # Allow the workflow to create and sign OIDC tokens
-
 jobs:
   build:
-    environment:
-      name: github-pages # Set the environment to production for deployment
-      url: ${{ steps.deployment.outputs.page_url }} # Set the environment URL to the deployed GitHub Pages URL
-    
     runs-on: ubuntu-latest # Use the latest Ubuntu runner
 
     steps:
