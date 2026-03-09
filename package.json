@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/pritamworld/w2026_comp2156.git"
   },
-  "keywords": ["comp2156"],
+  "keywords": ["comp2156", "GitHub Action"],
   "author": "Dr. Pritesh Patel",
   "license": "ISC",
   "bugs": {
