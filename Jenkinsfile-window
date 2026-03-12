@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs "node-v23.11.1"
+    }
+
+    environment {
+        REPO = "https://github.com/pritamworld/w2026_comp2156.git"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    credentialsId: 'github-creds',
+                    url: "${REPO}"
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build React App') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Deploy to GitHub Pages') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'github-creds',
+                    usernameVariable: 'GIT_USERNAME',
+                    passwordVariable: 'GIT_TOKEN'
+                )]) {
+
+                    sh '''
+                    git config --global user.email "jenkins@ci.com"
+                    git config --global user.name "jenkins"
+
+                    npm run deploy
+                    '''
+                }
+            }
+        }
+    }
+}
