@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        NODE_VERSION = "18"
+        NODE_VERSION = "node-v23.11.1"
         GIT_REPO = "https://github.com/pritamworld/w2026_comp2156.git"
         GIT_BRANCH = "main"
         GH_PAGES_BRANCH = "gh-pages"
