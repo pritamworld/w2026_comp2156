@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+    environment {
+        NODE_VERSION = "18"
+        GIT_REPO = "https://github.com/pritamworld/w2026_comp2156.git"
+        GIT_BRANCH = "main"
+        GH_PAGES_BRANCH = "gh-pages"
+    }
+
+    tools {
+        nodejs "${NODE_VERSION}"
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Build React App') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Deploy to GitHub Pages') {
+            steps {
+                sh '''
+                git config user.email "jenkins@local"
+                git config user.name "jenkins"
+
+                # clone gh-pages branch
+                git clone --branch ${GH_PAGES_BRANCH} ${GIT_REPO} gh-pages
+
+                # clear old files
+                rm -rf gh-pages/*
+
+                # copy new build
+                cp -r build/* gh-pages/
+
+                cd gh-pages
+                git add .
+                git commit -m "Deploy from Jenkins"
+                git push origin ${GH_PAGES_BRANCH}
+                '''
+            }
+        }
+    }
+}
