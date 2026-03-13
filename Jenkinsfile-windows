@@ -5,6 +5,10 @@ pipeline {
         nodejs "node-v23.11.1"
     }
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     environment {
         REPO = "https://github.com/pritamworld/w2026_comp2156.git"
     }
@@ -19,6 +23,12 @@ pipeline {
             }
         }
 
+        stage('Verify Node') {
+            steps {
+                bat 'node -v'
+                bat 'npm -v'
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 bat  'npm install'
@@ -48,5 +58,13 @@ pipeline {
                 }
             }
         }
+    }
+     post {
+            success {
+                echo "Deployment successful 🚀"
+            }
+            failure {
+                echo "Deployment failed ❌"
+            }
     }
 }
