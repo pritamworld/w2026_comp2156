@@ -45,6 +45,7 @@ pipeline {
                 XCOPY build/* gh-pages/ /E /I /Y
 
                 cd gh-pages
+                git checkout -b ${GH_PAGES_BRANCH}
                 git add .
                 git commit -m "Deploy from Jenkins"
                 git push origin ${GH_PAGES_BRANCH}
