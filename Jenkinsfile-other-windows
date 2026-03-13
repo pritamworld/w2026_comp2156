@@ -40,9 +40,9 @@ pipeline {
 
                 git clone --branch ${GH_PAGES_BRANCH} ${GIT_REPO} gh-pages
 
-                DEL /S /Q "gh-pages\*.*"
+                DEL /S /Q "gh-pages/*.*"
 
-                XCOPY build\* gh-pages\ /E /I /Y
+                XCOPY build/* gh-pages/ /E /I /Y
 
                 cd gh-pages
                 git add .
