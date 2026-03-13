@@ -38,13 +38,10 @@ pipeline {
                 git config user.email "jenkins@local"
                 git config user.name "jenkins"
 
-                # clone gh-pages branch
                 git clone --branch ${GH_PAGES_BRANCH} ${GIT_REPO} gh-pages
 
-                # clear old files
                 rm -rf gh-pages/*
 
-                # copy new build
                 cp -r build/* gh-pages/
 
                 cd gh-pages
