@@ -10,13 +10,17 @@
     "test": "echo \"Error: no test specified\"",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "sonar": "sonar-scanner"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pritamworld/w2026_comp2156.git"
   },
-  "keywords": ["comp2156", "GitHub Action"],
+  "keywords": [
+    "comp2156",
+    "GitHub Action"
+  ],
   "author": "Dr. Pritesh Patel",
   "license": "ISC",
   "bugs": {
@@ -50,6 +54,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "gh-pages": "^6.3.0",
+    "sonarqube-scanner": "^4.3.5"
   }
 }
