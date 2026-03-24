@@ -1,0 +1,6 @@
+projectKey=devops-reactjs-app
+serverUrl=http://localhost:9000
+serverVersion=26.3.0.120487
+dashboardUrl=http://localhost:9000/dashboard?id=devops-reactjs-app
+ceTaskId=721e5bda-0776-46d3-b50e-8a0c564489b7
+ceTaskUrl=http://localhost:9000/api/ce/task?id=721e5bda-0776-46d3-b50e-8a0c564489b7
