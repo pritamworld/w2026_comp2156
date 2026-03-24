@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "About to Commit your changes..."
+#curl -X POST -H "Content-Type: application/json" -d '{"message": "New commit pushed"}' https://example.com/webhook
